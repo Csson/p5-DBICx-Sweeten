@@ -28,7 +28,7 @@ sub _dbix_class_sweeten_create_methods {
         (my $method = $source) =~ s{::}{_}g;
 
         if($self->can($method)) {
-            croak(caller(1) . " already has a method named <$source>.");
+            croak(caller(1) . " already has a method named <$method>.");
         }
 
         *{ caller(1) . "::$method" } = sub {
@@ -53,12 +53,47 @@ __END__
 
 =head1 SYNOPSIS
 
-    use DBIx::Class::Sweeten::Schema;
+    # in MyApp::Schema, instead of inheriting from DBIx::Class::Schema
+    use base 'DBIx::Class::Sweeten::Schema';
 
 =head1 DESCRIPTION
 
-DBICx::Sweeten::Schema is ...
+DBIx::Class::Sweeten::Schema adds method accessors for all resultsets.
+
+In short, instead of this:
+
+    my $schema = MyApp::Schema->connect(...);
+    my $result = $schema->resultset('Author');
+
+You can do this:
+
+    my $schema = MyApp::Schema->connect(...);
+    my $result = $schema->Author;
+
+=head2 What is returned?
+
+The resultset methods can be called in four different ways.
+
+=head3 Without arguments
+
+    # $schema->resultset('Author')
+    $schema->Author;
+
+=head3 With a scalar
+    # $schema->resultset('Author')->find(5)
+    $schema->Author(5);
+
+=head3 With an array reference
+    # $schema->resultset('Book')->find({ author => 'J.R.R Tolkien', title => 'The Hobbit' }, { key => 'book_author_title' });
+    $schema->Book([book_author_title => { author => 'J.R.R Tolkien', title => 'The Hobbit' }]);
+
+=head With anything else
+    # $schema->resultset('Author')->search({ last_name => 'Tolkien'}, { order_by => { -asc => 'first_name' }});
+    $schema->Author({ last_name => 'Tolkien'}, { order_by => { -asc => 'first_name' }});
 
 =head1 SEE ALSO
+
+=for :list
+* L<DBIx::Class::Sweeten>
 
 =cut

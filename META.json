@@ -106,11 +106,23 @@
    },
    "provides" : {
       "DBIx::Class::Sweeten" : {
-         "file" : "lib/DBICx/Sweeten.pm",
+         "file" : "lib/DBIx/Class/Sweeten.pm",
+         "version" : "0.0001"
+      },
+      "DBIx::Class::Sweeten::Result" : {
+         "file" : "lib/DBIx/Class/Sweeten/Result.pm",
+         "version" : "0.0001"
+      },
+      "DBIx::Class::Sweeten::Result::Candy" : {
+         "file" : "lib/DBIx/Class/Sweeten/Result/Candy.pm",
+         "version" : "0.0001"
+      },
+      "DBIx::Class::Sweeten::ResultSet::Candy" : {
+         "file" : "lib/DBIx/Class/Sweeten/ResultSet/Candy.pm",
          "version" : "0.0001"
       },
       "DBIx::Class::Sweeten::Schema" : {
-         "file" : "lib/DBICx/Sweeten/Schema.pm",
+         "file" : "lib/DBIx/Class/Sweeten/Schema.pm",
          "version" : "0.0001"
       }
    },

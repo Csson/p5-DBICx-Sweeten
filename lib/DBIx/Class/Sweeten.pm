@@ -6,8 +6,6 @@ package DBIx::Class::Sweeten;
 # VERSION
 # ABSTRACT: Short intro
 
-
-
 1;
 
 __END__
@@ -16,12 +14,23 @@ __END__
 
 =head1 SYNOPSIS
 
-    use DBIx::Class::Sweeten;
+    # in MyApp::Schema, instead of inheriting from DBIx::Class::Schema
+    use base 'DBIx::Class::Sweeten::Schema';
 
 =head1 DESCRIPTION
 
-DBIx::Class::Sweeten is ...
+DBIx::Class::Sweeten is a collection of modules that can be used to reduce some boilerplate associated with L<DBIx::Class>.
+
+=for :list
+* L<DBIx::Class::Sweeten::Schema> - Access resultsets via method calls
+* L<DBIx::Class::Sweeten::Result::Base> - Adds column attribute for easier indexing
+* L<DBIx::Class::Sweeten::Result> - DBIx::Class::Candy defaults for result sources
+* L<DBIx::Class::Sweeten::ResultSet> - DBIx::Class::Candy defaults for resultsets
 
 =head1 SEE ALSO
+
+=for :list
+* L<DBIx::Class::Candy> - Sugar for L<DBIx::Class>
+* L<DBICx::Shortcuts> - An alternative for C<DBIx::Class::Sweeten::Schema>
 
 =cut
