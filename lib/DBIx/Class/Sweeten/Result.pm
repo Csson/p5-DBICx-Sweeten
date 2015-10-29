@@ -2,8 +2,6 @@ package DBIx::Class::Sweeten::Schema::Result {
 
     use base 'DBIx::Class::Core';
 
-    sub default_result_namespace { warn __PACKAGE__; return 'PhotoTurf::Schema::Result' }
-
     sub sqlt_deploy_hook($self, $table) {
 
         my $complicated_indices = {};
@@ -21,13 +19,13 @@ package DBIx::Class::Sweeten::Schema::Result {
                     if(!exists $complicated_indices->{ $index_name }) {
                         $complicated_indices->{ $index_name } = [];
                     }
-                    push $complicated_indices->{ $index_name }->@* => $column_name;
+                    push @{ $complicated_indices->{ $index_name } } => $column_name;
                 }
             }
         }
 
-        if(scalar keys $complicated_indices->%*) {
-            foreach my $index_name (keys $complicated_indices->%*) {
+        if(scalar keys %$complicated_indices) {
+            foreach my $index_name (keys %$complicated_indices) {
                 $table->add_index(name => $index_name, $complicated_indices->{ $index_name });
             }
         }
