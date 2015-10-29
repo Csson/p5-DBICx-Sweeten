@@ -12,7 +12,7 @@
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : "2"
    },
-   "name" : "DBICx-Sweeten",
+   "name" : "DBIx-Class-Sweeten",
    "no_index" : {
       "directory" : [
          "t",
@@ -105,21 +105,25 @@
       }
    },
    "provides" : {
-      "DBICx::Sweeten" : {
+      "DBIx::Class::Sweeten" : {
          "file" : "lib/DBICx/Sweeten.pm",
+         "version" : "0.0001"
+      },
+      "DBIx::Class::Sweeten::Schema" : {
+         "file" : "lib/DBICx/Sweeten/Schema.pm",
          "version" : "0.0001"
       }
    },
    "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
-         "web" : "https://github.com/Csson/p5-DBICx-Sweeten/issues"
+         "web" : "https://github.com/Csson/p5-DBIx-Class-Sweeten/issues"
       },
-      "homepage" : "https://metacpan.org/release/DBICx-Sweeten",
+      "homepage" : "https://metacpan.org/release/DBIx-Class-Sweeten",
       "repository" : {
          "type" : "git",
-         "url" : "https://github.com/Csson/p5-DBICx-Sweeten.git",
-         "web" : "https://github.com/Csson/p5-DBICx-Sweeten"
+         "url" : "https://github.com/Csson/p5-DBIx-Class-Sweeten.git",
+         "web" : "https://github.com/Csson/p5-DBIx-Class-Sweeten"
       }
    },
    "version" : "0.0001"

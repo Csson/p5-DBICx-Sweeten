@@ -2,7 +2,7 @@
 doctype: dist
 
 header:
-  name: DBICx-Sweeten
+  name: DBIx-Class-Sweeten
   author:
     - Erik Carlsson <info@code301.com>
   license: Perl_5

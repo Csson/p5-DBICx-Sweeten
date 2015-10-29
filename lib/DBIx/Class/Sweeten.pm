@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-package DBICx::Sweeten;
+package DBIx::Class::Sweeten;
 
 # VERSION
 # ABSTRACT: Short intro
@@ -16,11 +16,11 @@ __END__
 
 =head1 SYNOPSIS
 
-    use DBICx::Sweeten;
+    use DBIx::Class::Sweeten;
 
 =head1 DESCRIPTION
 
-DBICx::Sweeten is ...
+DBIx::Class::Sweeten is ...
 
 =head1 SEE ALSO
 

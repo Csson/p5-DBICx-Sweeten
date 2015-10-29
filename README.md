@@ -1,8 +1,8 @@
 # NAME
 
-DBICx::Sweeten - Short intro
+DBIx::Class::Sweeten - Short intro
 
-![Requires Perl 5.16+](https://img.shields.io/badge/perl-5.16+-brightgreen.svg) [![Travis status](https://api.travis-ci.org/Csson/p5-DBICx-Sweeten.svg?branch=master)](https://travis-ci.org/Csson/p5-DBICx-Sweeten)
+![Requires Perl 5.16+](https://img.shields.io/badge/perl-5.16+-brightgreen.svg) [![Travis status](https://api.travis-ci.org/Csson/p5-DBIx-Class-Sweeten.svg?branch=master)](https://travis-ci.org/Csson/p5-DBIx-Class-Sweeten)
 
 # VERSION
 
@@ -10,21 +10,21 @@ Version 0.0001, released 2015-10-29.
 
 # SYNOPSIS
 
-    use DBICx::Sweeten;
+    use DBIx::Class::Sweeten;
 
 # DESCRIPTION
 
-DBICx::Sweeten is ...
+DBIx::Class::Sweeten is ...
 
 # SEE ALSO
 
 # SOURCE
 
-[https://github.com/Csson/p5-DBICx-Sweeten](https://github.com/Csson/p5-DBICx-Sweeten)
+[https://github.com/Csson/p5-DBIx-Class-Sweeten](https://github.com/Csson/p5-DBIx-Class-Sweeten)
 
 # HOMEPAGE
 
-[https://metacpan.org/release/DBICx-Sweeten](https://metacpan.org/release/DBICx-Sweeten)
+[https://metacpan.org/release/DBIx-Class-Sweeten](https://metacpan.org/release/DBIx-Class-Sweeten)
 
 # AUTHOR
 
