@@ -1,8 +1,10 @@
-package DBIx::Class::Sweeten::Schema::Result {
+package DBIx::Class::Sweeten::Result {
 
     use base 'DBIx::Class::Core';
 
-    sub sqlt_deploy_hook($self, $table) {
+    sub sqlt_deploy_hook {
+        my $self = shift;
+        my $table = shift;
 
         my $complicated_indices = {};
         foreach my $column_name ($self->columns) {
