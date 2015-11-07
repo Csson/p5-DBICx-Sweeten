@@ -72,7 +72,7 @@ C<index> behaves differently depending on the value it is given:
 
 =for :list
 * If given a one-character value an index is created named C<[table_name]_idxa_[column_name]>.
-* If given a more-than-one-character value an index is created name C<[table_name]_idxm_[index_name]. If multiple columns are given the same name a composite index is created.
+* If given a more-than-one-character value an index is created name C<[table_name]_idxm_[index_name]>. If multiple columns are given the same name a composite index is created.
 * If given an array reference each value in it is treated according to the two rules above. 
 
 With these column definitions:

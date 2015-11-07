@@ -2,7 +2,7 @@
 
 DBIx::Class::Sweeten - Short intro
 
-![Requires Perl 5.16](https://img.shields.io/badge/perl-5.16-brightgreen.svg) [![Travis status](https://api.travis-ci.org/Csson/p5-DBIx-Class-Sweeten.svg?branch=master)](https://travis-ci.org/Csson/p5-DBIx-Class-Sweeten)
+![Requires Perl 5.16](https://img.shields.io/badge/perl-5.16-brightgreen.svg) [![Travis status](https://api.travis-ci.org//.svg?branch=master)](https://travis-ci.org//)
 
 # VERSION
 
