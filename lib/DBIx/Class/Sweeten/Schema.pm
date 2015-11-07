@@ -87,7 +87,7 @@ The resultset methods can be called in four different ways.
     # $schema->resultset('Book')->find({ author => 'J.R.R Tolkien', title => 'The Hobbit' }, { key => 'book_author_title' });
     $schema->Book([book_author_title => { author => 'J.R.R Tolkien', title => 'The Hobbit' }]);
 
-=head With anything else
+=head3 With anything else
     # $schema->resultset('Author')->search({ last_name => 'Tolkien'}, { order_by => { -asc => 'first_name' }});
     $schema->Author({ last_name => 'Tolkien'}, { order_by => { -asc => 'first_name' }});
 
