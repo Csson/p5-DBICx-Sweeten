@@ -4,7 +4,7 @@ package DBIx::Class::Sweeten::Result {
     use String::CamelCase;
 
     sub base {
-        (my $base = caller(2)) =~ s{^(.*?)::Schema::Result::.*}{$1};
+        (my $base = caller(2)) =~ s{::Schema::Result::.*$}{};
 
         return $_[1] || "${base}::Schema::Result";
     }

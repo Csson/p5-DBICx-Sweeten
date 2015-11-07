@@ -6,17 +6,28 @@ DBIx::Class::Sweeten - Short intro
 
 # VERSION
 
-Version 0.0001, released 2015-10-29.
+Version 0.0001, released 2015-11-05.
 
 # SYNOPSIS
 
-    use DBIx::Class::Sweeten;
+    # in MyApp::Schema, instead of inheriting from DBIx::Class::Schema
+    use base 'DBIx::Class::Sweeten::Schema';
 
 # DESCRIPTION
 
-DBIx::Class::Sweeten is ...
+DBIx::Class::Sweeten is a collection of modules that can be used to reduce some boilerplate associated with [DBIx::Class](https://metacpan.org/pod/DBIx::Class).
+
+- [DBIx::Class::Sweeten::Schema](https://metacpan.org/pod/DBIx::Class::Sweeten::Schema) - Access resultsets via method calls
+- [DBIx::Class::Sweeten::Result::Base](https://metacpan.org/pod/DBIx::Class::Sweeten::Result::Base) - Adds a column attribute for easier indexing
+- [DBIx::Class::Sweeten::Result](https://metacpan.org/pod/DBIx::Class::Sweeten::Result) - DBIx::Class::Candy defaults for result sources
+- [DBIx::Class::Sweeten::ResultSet](https://metacpan.org/pod/DBIx::Class::Sweeten::ResultSet) - DBIx::Class::Candy defaults for resultsets
 
 # SEE ALSO
+
+- [DBIx::Class](https://metacpan.org/pod/DBIx::Class)
+- [DBIx::Class::Candy](https://metacpan.org/pod/DBIx::Class::Candy) - Sugar for `DBIx::Class`
+- [DBIx::Class::Helpers](https://metacpan.org/pod/DBIx::Class::Helpers) - More `DBIx::Class` goodness
+- [DBICx::Shortcuts](https://metacpan.org/pod/DBICx::Shortcuts) - An alternative for `DBIx::Class::Sweeten::Schema`
 
 # SOURCE
 

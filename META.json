@@ -26,7 +26,7 @@
    "prereqs" : {
       "configure" : {
          "requires" : {
-            "Module::Build::Tiny" : "0.039"
+            "ExtUtils::MakeMaker" : "0"
          }
       },
       "develop" : {
@@ -43,6 +43,7 @@
             "Dist::Zilla::Plugin::Git::Tag" : "0",
             "Dist::Zilla::Plugin::GithubMeta" : "0",
             "Dist::Zilla::Plugin::License" : "0",
+            "Dist::Zilla::Plugin::MakeMaker" : "0",
             "Dist::Zilla::Plugin::Manifest" : "0",
             "Dist::Zilla::Plugin::ManifestSkip" : "0",
             "Dist::Zilla::Plugin::MetaJSON" : "0",
@@ -50,7 +51,6 @@
             "Dist::Zilla::Plugin::MetaProvides::Class" : "0",
             "Dist::Zilla::Plugin::MetaProvides::Package" : "0",
             "Dist::Zilla::Plugin::MetaYAML" : "0",
-            "Dist::Zilla::Plugin::ModuleBuildTiny" : "0",
             "Dist::Zilla::Plugin::NextRelease" : "0",
             "Dist::Zilla::Plugin::NextVersion::Semantic" : "0",
             "Dist::Zilla::Plugin::OurPkgVersion" : "0",
@@ -113,12 +113,12 @@
          "file" : "lib/DBIx/Class/Sweeten/Result.pm",
          "version" : "0.0001"
       },
-      "DBIx::Class::Sweeten::Result::Candy" : {
-         "file" : "lib/DBIx/Class/Sweeten/Result/Candy.pm",
+      "DBIx::Class::Sweeten::Result::Base" : {
+         "file" : "lib/DBIx/Class/Sweeten/Result/Base.pm",
          "version" : "0.0001"
       },
-      "DBIx::Class::Sweeten::ResultSet::Candy" : {
-         "file" : "lib/DBIx/Class/Sweeten/ResultSet/Candy.pm",
+      "DBIx::Class::Sweeten::ResultSet" : {
+         "file" : "lib/DBIx/Class/Sweeten/ResultSet.pm",
          "version" : "0.0001"
       },
       "DBIx::Class::Sweeten::Schema" : {
