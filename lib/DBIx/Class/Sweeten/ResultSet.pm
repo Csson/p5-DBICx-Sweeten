@@ -1,20 +1,22 @@
-package DBIx::Class::Sweeten::ResultSet {
+use 5.10.1;
+use strict;
+use warnings;
 
-    use base 'DBIx::Class::Candy::ResultSet';
+package DBIx::Class::Sweeten::ResultSet;
 
-    sub base {
-    	(my $base = caller(2)) =~ s{^(.*?)::Schema::ResultSet::.*}{$1};
+# ABSTRACT: Short intro
+# AUTHORITY
+our $VERSION = '0.0100';
 
-        return $_[1] || "${base}::Schema::ResultSet";
-    }
-    sub perl_version { 20 }
+use base 'DBIx::Class::Candy::ResultSet';
 
-    sub experimental {
-        [qw/
-            signatures
-            postderef
-        /];
-    }
+sub base {
+    (my $base = caller(2)) =~ s{^(.*?)::Schema::ResultSet::.*}{$1};
+
+    return $_[1] || "${base}::Schema::ResultSet";
 }
+sub perl_version { 10 }
+
+sub experimental { [] }
 
 1;

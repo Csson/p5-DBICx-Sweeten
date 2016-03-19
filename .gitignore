@@ -1,7 +1,12 @@
-/DBIx-Class-Sweeten-*
+# This file was auto-generated from iller.yaml by Dist::Iller on 2016-02-29 21:55:59 UTC.
+# The following configs were used:
+# * Dist::Iller::Config::Author::CSSON: 0.0309
+
 /.build
 /_build*
 /Build
 MYMETA.*
 !META.json
 /.prove
+/DBIx-Class-Sweeten-*
+.coverhistory.json

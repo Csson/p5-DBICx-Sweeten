@@ -1,44 +1,51 @@
-package DBIx::Class::Sweeten::Result::Base {
+use 5.10.1;
+use strict;
+use warnings;
 
-    use base 'DBIx::Class::Core';
+package DBIx::Class::Sweeten::Result::Base;
 
-    sub sqlt_deploy_hook {
-        my $self = shift;
-        my $table = shift;
+# ABSTRACT: Short intro
+# AUTHORITY
+our $VERSION = '0.0100';
 
-        my $indices = {};
-        for my $column_name ($self->columns) {
-            my $info = $self->column_info($column_name);
+use base 'DBIx::Class::Core';
 
-            if($info->{'index'}) {
-                
-                my $indexvalues = ref $info->{'index'} ne 'ARRAY' ? [ $info->{'index'} ] : $info->{'index'};
+sub sqlt_deploy_hook {
+    my $self = shift;
+    my($table) = @_;
 
-                for my $indexvalue (@$indexvalues) {
+    my $indices = {};
+    for my $column_name ($self->columns) {
+        my $info = $self->column_info($column_name);
 
-                    if(length $indexvalue > 1) {
-                        my $index_name = sprintf '%s_idxm_%s', $table, $indexvalue;
+        if($info->{'indexed'}) {
 
-                        if(!exists $indices->{ $index_name }) {
-                            $indices->{ $index_name } = [];
-                        }
-                        push @{ $indices->{ $index_name } } => $column_name;
-                    }
-                    else {
-                        my $index_name = sprintf '%s_idxa_%s', $table, $column_name;
-                        $indices->{ $index_name } = [$column_name];
-                    }
+            my $indexvalues = ref $info->{'indexed'} ne 'ARRAY' ? [ $info->{'indexed'} ] : $info->{'indexed'};
+
+            for my $indexvalue (@$indexvalues) {
+
+                if(length $indexvalue == 1 && $indexvalue) {
+                    my $index_name = sprintf '%s_idxa_%s', $table, $column_name;
+                    $indices->{ $index_name } = [$column_name];
                 }
-            }
-        }
+                elsif(length $indexvalue > 1) {
+                    my $index_name = sprintf '%s_idxm_%s', $table, $indexvalue;
 
-        if(scalar keys %$indices) {
-            for my $index_name (keys %$indices) {
-                $table->add_index(name => $index_name, fields => $indices->{ $index_name });
+                    if(!exists $indices->{ $index_name }) {
+                        $indices->{ $index_name } = [];
+                    }
+                    push @{ $indices->{ $index_name } } => $column_name;
+                }
             }
         }
     }
 
+    if(scalar keys %$indices) {
+        for my $index_name (keys %$indices) {
+            $table->add_index(name => $index_name, fields => $indices->{ $index_name });
+        }
+    }
+    $self->next::method(@_) if $self->next::can;
 }
 
 1;
@@ -58,22 +65,22 @@ __END__
     column last_name => {
         data_type => 'varchar',
         size => 150,
-        index => 1,
+        indexed => 1,
     };
 
 =head1 DESCRIPTION
 
 Adding indices (apart from primary keys and unique constraints) requires creating a C<sqlt_deploy_hook> method and calling C<add_index> manually. This module
-introduces the new C<index> column attribute.
+introduces the C<indexed> column attribute.
 
 =head2 Possible values
 
-C<index> behaves differently depending on the value it is given:
+C<indexed> behaves differently depending on the value it is given:
 
 =for :list
-* If given a one-character value an index is created named C<[table_name]_idxa_[column_name]>.
+* If given a one-character value, that evaluates to true, an index is created named C<[table_name]_idxa_[column_name]>.
 * If given a more-than-one-character value an index is created name C<[table_name]_idxm_[index_name]>. If multiple columns are given the same name a composite index is created.
-* If given an array reference each value in it is treated according to the two rules above. 
+* If given an array reference each value in it is treated according to the two rules above.
 
 With these column definitions:
 
@@ -81,29 +88,29 @@ With these column definitions:
     column first_name => {
         data_type => 'varchar',
         size => 150,
-        index => 'name',
+        indexed => 'name',
     };
     column last_name => {
         data_type => 'varchar',
         size => 150,
-        index => [1, 'name'],
+        indexed => [1, 'name'],
     };
     column country => {
         data_type => 'varchar',
         size => 150,
-        index => 1,
+        indexed => 1,
     };
 
 The following indices are created:
 
 =for :list
-* C<Author_idxm_name> consisting of C<first_name> and C<last_name>
-* C<Author_idxa_last_name> consisting of C<last_name>
-* C<Author_idxa_country> consisting of C<country>
+* C<Author_idxm_name> for C<first_name> and C<last_name>
+* C<Author_idxa_last_name> for C<last_name>
+* C<Author_idxa_country> for C<country>
 
 =head2 Needs a custom sqlt_deploy_hook?
 
-If you still need an C<sqlt_deploy_hook> method in a result source just call the parent's C<sqlt_deploy_hook> first:
+If you need an C<sqlt_deploy_hook> method in a result source just call the parent's C<sqlt_deploy_hook> in your local sqlt_deploy_hook:
 
     sub sqlt_deploy_hook {
         my $self = shift;
@@ -112,6 +119,7 @@ If you still need an C<sqlt_deploy_hook> method in a result source just call the
         $self->next::method($table);
 
         ...
+
     }
 
 =cut

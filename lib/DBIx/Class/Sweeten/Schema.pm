@@ -1,10 +1,12 @@
+use 5.10.1;
 use strict;
 use warnings;
 
 package DBIx::Class::Sweeten::Schema;
 
-# VERSION
 # ABSTRACT: Short intro
+# AUTHORITY
+our $VERSION = '0.0100';
 
 use parent 'DBIx::Class::Schema';
 use Carp qw/croak/;

@@ -1,33 +1,34 @@
-package DBIx::Class::Sweeten::Result {
+use 5.10.1;
+use strict;
+use warnings;
 
-    use base 'DBIx::Class::Candy';
-    use String::CamelCase;
+package DBIx::Class::Sweeten::Result;
 
-    sub base {
-        (my $base = caller(2)) =~ s{::Schema::Result::.*$}{};
+# ABSTRACT: Short intro
+# AUTHORITY
+our $VERSION = '0.0100';
 
-        return $_[1] || "${base}::Schema::Result";
-    }
-    sub autotable            { 1 }
-    sub perl_version         { 20 }
-    sub experimental {
-        [qw/
-            signatures
-            postderef
-        /];
-    }
+use base 'DBIx::Class::Candy';
+use String::CamelCase;
 
-    sub gen_table {
-        my $self = shift;
-        my $resultclass = shift;
+sub base {
+    (my $base = caller(2)) =~ s{::Schema::Result::.*$}{};
 
-        $resultclass =~ s{^.*::Schema::Result::}{};
-        $resultclass =~ s{::}{__}g;
-        $resultclass = String::CamelCase::decamelize($resultclass);
+    return $_[1] || "${base}::Schema::Result";
+}
+sub autotable    { 1 }
+sub perl_version { 10 }
+sub experimental { [ ] }
 
-        return $resultclass;
-    }
+sub gen_table {
+    my $self = shift;
+    my $resultclass = shift;
 
+    $resultclass =~ s{^.*::Schema::Result::}{};
+    $resultclass =~ s{::}{__}g;
+    $resultclass = String::CamelCase::decamelize($resultclass);
+
+    return $resultclass;
 }
 
 1;

@@ -2,11 +2,18 @@
 
 DBIx::Class::Sweeten - Short intro
 
-![Requires Perl 5.16](https://img.shields.io/badge/perl-5.16-brightgreen.svg) [![Travis status](https://api.travis-ci.org//.svg?branch=master)](https://travis-ci.org//)
+<div>
+    <p>
+    <img src="https://img.shields.io/badge/perl-5.16+-blue.svg" alt="Requires Perl 5.16+" />
+    <a href="https://travis-ci.org//"><img src="https://api.travis-ci.org//.svg?branch=master" alt="Travis status" /></a>
+    <a href="http://cpants.cpanauthors.org/dist/DBIx-Class-Sweeten-0.0100"><img src="https://badgedepot.code301.com/badge/kwalitee/DBIx-Class-Sweeten/0.0100" alt="Distribution kwalitee" /></a>
+    <a href="http://matrix.cpantesters.org/?dist=DBIx-Class-Sweeten%200.0100"><img src="https://badgedepot.code301.com/badge/cpantesters/DBIx-Class-Sweeten/0.0100" alt="CPAN Testers result" /></a>
+    </p>
+</div>
 
 # VERSION
 
-Version 0.0001, released 2015-11-07.
+Version 0.0100, released 2016-03-19.
 
 # SYNOPSIS
 
@@ -31,11 +38,11 @@ DBIx::Class::Sweeten is a collection of modules that can be used to reduce some 
 
 # SOURCE
 
-[https://github.com/Csson/p5-DBIx-Class-Sweeten](https://github.com/Csson/p5-DBIx-Class-Sweeten)
+L<>
 
 # HOMEPAGE
 
-[https://metacpan.org/release/DBIx-Class-Sweeten](https://metacpan.org/release/DBIx-Class-Sweeten)
+L<>
 
 # AUTHOR
 
@@ -47,3 +54,15 @@ This software is copyright (c) 2015 by Erik Carlsson.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
+
+# POD ERRORS
+
+Hey! **The above document had some coding errors, which are explained below:**
+
+- Around line 79:
+
+    An empty L<>
+
+- Around line 83:
+
+    An empty L<>

@@ -17,10 +17,6 @@ prereqs:
 plugins:
   - +config: Author::CSSON
     is_private: 1
-  
-  - +add_plugin: TravisYML
-    +before: Git::Tag
-    perl_version: 5.16 5.20
 
   - +extend_plugin: UploadToStratopan
     repo: TheFirst
@@ -32,3 +28,12 @@ plugins:
   - +config: Author::CSSON
 
   - +remove_plugin: Splint
+
+---
+doctype: cpanfile
+
+---
+doctype: gitignore
+config: Author::CSSON
+always:
+ - /DBIx-Class-Sweeten-*
