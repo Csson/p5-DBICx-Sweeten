@@ -353,43 +353,6 @@ sub null {
 
 __END__
 
-
-sub datetime {
-    my $size = ref $_[0] eq '' ? { size => shift } : {};
-    return merge { data_type => 'datetime', numeric => 0, %{ $size } }, shift || {};
-}
-
-
-
-
-
-
-
-my $res = integer indexed unsigned;
-p $res;
-
-$res = integer 16, indexed unsigned;
-p $res;
-
-$res = datetime attr timezone_source => 'created_at_tz', attr index => 1;
-p $res;
-
-__END__
-
-
-primary_column user_id => serial;
-
-column name => varchar 250;
-
-column email => varchar 60, indexed;
-
-column created_at_tz => varchar 40, nullable;
-
-column created_at => datetime default current_timestamp, set_on_update attr timezone_source => 'created_at_tz';
-
-column temperature => decimal 4, 2, indexed;
-
-column what => type 'datatype', numeric, nullable;
 =pod
 
 =head1 SYNOPSIS

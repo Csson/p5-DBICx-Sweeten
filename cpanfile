@@ -1,6 +1,7 @@
-# This file was auto-generated from iller.yaml by Dist::Iller on 2016-02-29 21:56:20 UTC.
+# This file was auto-generated from iller.yaml by Dist::Iller on 2016-03-19 20:39:02 UTC.
 
 on runtime => sub {
+    requires 'DBIx::Class::Candy' => '0';
     requires 'perl' => '5.016000';
 };
 on test => sub {
@@ -76,7 +77,6 @@ on develop => sub {
     requires 'Pod::Weaver::Section::Authors' => '0';
     requires 'Pod::Weaver::Section::Badges' => '0.0401';
     requires 'Pod::Weaver::Section::Collect' => '0';
-    requires 'Pod::Weaver::Section::GenerateSection' => '1.01';
     requires 'Pod::Weaver::Section::Generic' => '0';
     requires 'Pod::Weaver::Section::Leftovers' => '0';
     requires 'Pod::Weaver::Section::Legal' => '0';

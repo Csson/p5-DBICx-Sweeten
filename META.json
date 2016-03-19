@@ -90,7 +90,6 @@
             "Pod::Weaver::Section::Authors" : "0",
             "Pod::Weaver::Section::Badges" : "0.0401",
             "Pod::Weaver::Section::Collect" : "0",
-            "Pod::Weaver::Section::GenerateSection" : "1.01",
             "Pod::Weaver::Section::Generic" : "0",
             "Pod::Weaver::Section::Leftovers" : "0",
             "Pod::Weaver::Section::Legal" : "0",
@@ -112,6 +111,7 @@
       },
       "runtime" : {
          "requires" : {
+            "DBIx::Class::Candy" : "0",
             "perl" : "5.016000"
          }
       },
@@ -151,10 +151,6 @@
       }
    },
    "release_status" : "stable",
-   "resources" : {
-      "bugtracker" : {},
-      "repository" : {}
-   },
    "version" : "0.0100",
    "x_authority" : "cpan:CSSON"
 }

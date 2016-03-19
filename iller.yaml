@@ -13,6 +13,7 @@ prereqs:
   runtime:
     requires:
       - perl: 5.016000
+      - DBIx::Class::Candy
 
 plugins:
   - +config: Author::CSSON
@@ -28,6 +29,8 @@ plugins:
   - +config: Author::CSSON
 
   - +remove_plugin: Splint
+  - +remove_plugin: SOURCE
+  - +remove_plugin: HOMEPAGE
 
 ---
 doctype: cpanfile

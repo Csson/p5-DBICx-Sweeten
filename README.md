@@ -36,14 +36,6 @@ DBIx::Class::Sweeten is a collection of modules that can be used to reduce some 
 - [DBIx::Class::Helpers](https://metacpan.org/pod/DBIx::Class::Helpers) - More `DBIx::Class` goodness
 - [DBICx::Shortcuts](https://metacpan.org/pod/DBICx::Shortcuts) - An alternative for `DBIx::Class::Sweeten::Schema`
 
-# SOURCE
-
-L<>
-
-# HOMEPAGE
-
-L<>
-
 # AUTHOR
 
 Erik Carlsson <info@code301.com>
@@ -54,15 +46,3 @@ This software is copyright (c) 2015 by Erik Carlsson.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
-
-# POD ERRORS
-
-Hey! **The above document had some coding errors, which are explained below:**
-
-- Around line 79:
-
-    An empty L<>
-
-- Around line 83:
-
-    An empty L<>
