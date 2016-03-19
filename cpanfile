@@ -1,7 +1,9 @@
-# This file was auto-generated from iller.yaml by Dist::Iller on 2016-03-19 20:39:02 UTC.
+# This file was auto-generated from iller.yaml by Dist::Iller on 2016-03-19 20:42:34 UTC.
 
 on runtime => sub {
+    requires 'DBIx::Class' => '0';
     requires 'DBIx::Class::Candy' => '0';
+    requires 'String::CamelCase' => '0.02';
     requires 'perl' => '5.016000';
 };
 on test => sub {

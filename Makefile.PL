@@ -17,7 +17,9 @@ my %WriteMakefileArgs = (
   "MIN_PERL_VERSION" => "5.016000",
   "NAME" => "DBIx::Class::Sweeten",
   "PREREQ_PM" => {
-    "DBIx::Class::Candy" => 0
+    "DBIx::Class" => 0,
+    "DBIx::Class::Candy" => 0,
+    "String::CamelCase" => "0.02"
   },
   "TEST_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0,
@@ -34,11 +36,13 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
+  "DBIx::Class" => 0,
   "DBIx::Class::Candy" => 0,
   "ExtUtils::MakeMaker" => 0,
   "File::Spec" => 0,
   "IO::Handle" => 0,
   "IPC::Open3" => 0,
+  "String::CamelCase" => "0.02",
   "Test::More" => "0.96"
 );
 

@@ -13,7 +13,9 @@ prereqs:
   runtime:
     requires:
       - perl: 5.016000
+      - DBIx::Class
       - DBIx::Class::Candy
+      - String::CamelCase
 
 plugins:
   - +config: Author::CSSON

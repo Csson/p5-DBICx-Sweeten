@@ -111,7 +111,9 @@
       },
       "runtime" : {
          "requires" : {
+            "DBIx::Class" : "0",
             "DBIx::Class::Candy" : "0",
+            "String::CamelCase" : "0.02",
             "perl" : "5.016000"
          }
       },
