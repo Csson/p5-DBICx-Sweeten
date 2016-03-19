@@ -6,7 +6,7 @@ package DBIx::Class::Sweeten;
 
 # ABSTRACT: Short intro
 # AUTHORITY
-our $VERSION = '0.0100';
+our $VERSION = '0.0102';
 
 use Carp qw/croak/;
 use Sub::Exporter::Progressive -setup => {

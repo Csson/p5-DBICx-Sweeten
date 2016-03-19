@@ -6,7 +6,7 @@ package DBIx::Class::Sweeten::Schema;
 
 # ABSTRACT: Short intro
 # AUTHORITY
-our $VERSION = '0.0100';
+our $VERSION = '0.0102';
 
 use parent 'DBIx::Class::Schema';
 use Carp qw/croak/;
