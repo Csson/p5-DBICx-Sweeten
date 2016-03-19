@@ -133,27 +133,27 @@
    "provides" : {
       "DBIx::Class::Sweeten" : {
          "file" : "lib/DBIx/Class/Sweeten.pm",
-         "version" : "0.0100"
+         "version" : "0.0101"
       },
       "DBIx::Class::Sweeten::Result" : {
          "file" : "lib/DBIx/Class/Sweeten/Result.pm",
-         "version" : "0.0100"
+         "version" : "0.0101"
       },
       "DBIx::Class::Sweeten::Result::Base" : {
          "file" : "lib/DBIx/Class/Sweeten/Result/Base.pm",
-         "version" : "0.0100"
+         "version" : "0.0101"
       },
       "DBIx::Class::Sweeten::ResultSet" : {
          "file" : "lib/DBIx/Class/Sweeten/ResultSet.pm",
-         "version" : "0.0100"
+         "version" : "0.0101"
       },
       "DBIx::Class::Sweeten::Schema" : {
          "file" : "lib/DBIx/Class/Sweeten/Schema.pm",
-         "version" : "0.0100"
+         "version" : "0.0101"
       }
    },
    "release_status" : "stable",
-   "version" : "0.0100",
+   "version" : "0.0101",
    "x_authority" : "cpan:CSSON"
 }
 
