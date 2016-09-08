@@ -13,7 +13,7 @@ use Carp qw/croak/;
 
 our $dbix_class_sweeten_methods_created = 0;
 
-sub connect {
+sub connection {
     my $self = shift->next::method(@_);
 
     if(!$dbix_class_sweeten_methods_created) {
