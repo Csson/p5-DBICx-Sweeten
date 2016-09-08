@@ -1,10 +1,10 @@
-# This file was auto-generated from iller.yaml by Dist::Iller on 2016-03-19 20:42:34 UTC.
+# This file was auto-generated from iller.yaml by Dist::Iller on 2016-09-08 08:02:47 UTC.
 
 on runtime => sub {
     requires 'DBIx::Class' => '0';
     requires 'DBIx::Class::Candy' => '0';
     requires 'String::CamelCase' => '0.02';
-    requires 'perl' => '5.016000';
+    requires 'perl' => '5.010001';
 };
 on test => sub {
     requires 'ExtUtils::MakeMaker' => '0';
@@ -49,6 +49,7 @@ on develop => sub {
     requires 'Dist::Zilla::Plugin::MakeMaker' => '0';
     requires 'Dist::Zilla::Plugin::Manifest' => '0';
     requires 'Dist::Zilla::Plugin::ManifestSkip' => '0';
+    requires 'Dist::Zilla::Plugin::MetaConfig' => '0';
     requires 'Dist::Zilla::Plugin::MetaJSON' => '0';
     requires 'Dist::Zilla::Plugin::MetaNoIndex' => '0';
     requires 'Dist::Zilla::Plugin::MetaProvides::Package' => '2.003001';
@@ -57,6 +58,7 @@ on develop => sub {
     requires 'Dist::Zilla::Plugin::PodSyntaxTests' => '0';
     requires 'Dist::Zilla::Plugin::PodWeaver' => '4.006';
     requires 'Dist::Zilla::Plugin::Prereqs' => '0';
+    requires 'Dist::Zilla::Plugin::PromptIfStale' => '0';
     requires 'Dist::Zilla::Plugin::Readme' => '0';
     requires 'Dist::Zilla::Plugin::ReadmeAnyFromPod' => '0.150250';
     requires 'Dist::Zilla::Plugin::RewriteVersion::Transitional' => '0.007';
@@ -95,5 +97,5 @@ on develop => sub {
 };
 on develop => sub {
     suggests 'Dist::Iller' => '0.1408';
-    suggests 'Dist::Iller::Config::Author::CSSON' => '0.0309';
+    suggests 'Dist::Iller::Config::Author::CSSON' => '0.0312';
 };

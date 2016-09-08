@@ -4,6 +4,7 @@ Revision history for DBICx-Sweeten
  [API Changes]
 
  [Bug Fixes]
+ - ::Schema overrides 'connection' instead of 'connect'. It now passes the upcoming DBIx::Class sanity checker.
 
  [Documentation]
 
