@@ -4,10 +4,11 @@ DBIx::Class::Sweeten - Short intro
 
 <div>
     <p>
-    <img src="https://img.shields.io/badge/perl-5.16+-blue.svg" alt="Requires Perl 5.16+" />
+    <img src="https://img.shields.io/badge/perl-5.10.1+-blue.svg" alt="Requires Perl 5.10.1+" />
     <a href="https://travis-ci.org//"><img src="https://api.travis-ci.org//.svg?branch=master" alt="Travis status" /></a>
     <a href="http://cpants.cpanauthors.org/release/CSSON/DBIx-Class-Sweeten-0.0102"><img src="http://badgedepot.code301.com/badge/kwalitee/CSSON/DBIx-Class-Sweeten/0.0102" alt="Distribution kwalitee" /></a>
     <a href="http://matrix.cpantesters.org/?dist=DBIx-Class-Sweeten%200.0102"><img src="http://badgedepot.code301.com/badge/cpantesters/DBIx-Class-Sweeten/0.0102" alt="CPAN Testers result" /></a>
+    <img src="https://img.shields.io/badge/coverage-75.3%-orange.svg" alt="coverage 75.3%" />
     </p>
 </div>
 
