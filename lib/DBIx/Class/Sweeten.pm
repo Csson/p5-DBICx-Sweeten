@@ -9,6 +9,7 @@ package DBIx::Class::Sweeten;
 our $VERSION = '0.0102';
 
 use Carp qw/croak/;
+use List::Util qw/uniq/;
 use Sub::Exporter::Progressive -setup => {
     exports => [qw/
         type
@@ -68,6 +69,9 @@ use Sub::Exporter::Progressive -setup => {
         now
         current_timestamp
         null
+
+        many
+        across
     /],
     groups => {
         default => [qw/
@@ -129,15 +133,31 @@ sub merge {
     my $first = shift;
     my $second = shift;
 
-    for my $key (keys %{ $second }) {
-        if(ref $second->{ $key } eq 'HASH' && exists $first->{ $key }) {
-            $first->{ $key } = { %{ $first->{ $key } }, %{ $second->{ $key } } };
+    my $merged = {};
+    for my $key (uniq (keys %{ $first }, keys %{ $second })) {
+        if(exists $first->{ $key } && !exists $second->{ $key }) {
+            $merged->{ $key } = $first->{ $key };
+        }
+        elsif(!exists $first->{ $key } && exists $second->{ $key }) {
+            $merged->{ $key } = $second->{ $key };
         }
         else {
-            $first->{ $key } = $second->{ $key };
+            if(ref $first->{ $key } ne 'HASH' && $second->{ $key } ne 'HASH') {
+                $merged->{ $key } = $first->{ $key };
+            }
+            else {
+                $merged->{ $key } = merge($first->{ $key }, $second->{ $key });
+            }
         }
     }
-    return $first;
+
+    return $merged;
+}
+sub many {
+    return merge { _sweeten => { many => { shift ,=> 1 } } }, shift || {};
+}
+sub across {
+    return merge { _sweeten => { across => { shift ,=> { shift ,=> 1 } } } }, shift || {};
 }
 
 sub type {
