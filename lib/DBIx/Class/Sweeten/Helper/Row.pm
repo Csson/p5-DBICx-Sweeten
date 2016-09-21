@@ -30,9 +30,11 @@ sub primary_foreign {
     my $column_name = shift;
     my $args = shift;
 
+    $seen_table->{ $self } = $self;
     $args->{'is_foreign_key'} = 1;
     $self->add_columns($column_name => $args);
     $self->set_primary_key($self->primary_columns, $column_name);
+    $self->handle_foreign_relations($column_name);
 }
 
 sub primary {
@@ -83,6 +85,13 @@ sub foreign {
 
     $args->{'is_foreign_key'} = 1;
     $self->add_columns($column_name => $args);
+
+    $self->handle_foreign_relations($column_name);
+
+}
+sub handle_foreign_relations {
+    my $self = shift;
+    my $column_name = shift;
 
     return if !exists $relations_to_add->{ $self }{ $column_name };
     my @relation = @{ delete $relations_to_add->{ $self }{ $column_name } };
