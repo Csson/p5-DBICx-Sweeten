@@ -71,7 +71,7 @@ __END__
 =head1 DESCRIPTION
 
 Adding indices (apart from primary keys and unique constraints) requires creating a C<sqlt_deploy_hook> method and calling C<add_index> manually. This module
-introduces the C<indexed> column attribute.
+adds the C<indexed> column attribute.
 
 =head2 Possible values
 
