@@ -8,13 +8,13 @@ DBIx::Class::Sweeten - Short intro
     <a href="https://travis-ci.org//"><img src="https://api.travis-ci.org//.svg?branch=master" alt="Travis status" /></a>
     <a href="http://cpants.cpanauthors.org/release/CSSON/DBIx-Class-Sweeten-0.0102"><img src="http://badgedepot.code301.com/badge/kwalitee/CSSON/DBIx-Class-Sweeten/0.0102" alt="Distribution kwalitee" /></a>
     <a href="http://matrix.cpantesters.org/?dist=DBIx-Class-Sweeten%200.0102"><img src="http://badgedepot.code301.com/badge/cpantesters/DBIx-Class-Sweeten/0.0102" alt="CPAN Testers result" /></a>
-    <img src="https://img.shields.io/badge/coverage-75.3%-orange.svg" alt="coverage 75.3%" />
+    <img src="https://img.shields.io/badge/coverage-73.8%-red.svg" alt="coverage 73.8%" />
     </p>
 </div>
 
 # VERSION
 
-Version 0.0102, released 2016-09-08.
+Version 0.0102, released 2016-09-21.
 
 # SYNOPSIS
 
