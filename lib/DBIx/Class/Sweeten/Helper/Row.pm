@@ -11,30 +11,17 @@ export_methods [qw/
     col
     primary
     foreign
+    belongs
     unique
-    primary_foreign
+    primary_belongs
 /];
 
 # ABSTRACT: Short intro
 # AUTHORITY
 our $VERSION = '0.0102';
 
-my $relations_to_add = {};
-my $seen_table = {};
-
 sub col {
     shift->add_columns(shift ,=> shift);
-}
-sub primary_foreign {
-    my $self = shift;
-    my $column_name = shift;
-    my $args = shift;
-
-    $seen_table->{ $self } = $self;
-    $args->{'is_foreign_key'} = 1;
-    $self->add_columns($column_name => $args);
-    $self->set_primary_key($self->primary_columns, $column_name);
-    $self->handle_foreign_relations($column_name);
 }
 
 sub primary {
@@ -42,23 +29,23 @@ sub primary {
     my $column_name = shift;
     my $args = shift;
 
-    $seen_table->{ $self } = $self;
-    my $has_many_sources = delete $args->{'_sweeten'}{'many'};
+    my $normal = {
+        has_many => [keys %{ $args->{'_sweeten'}{'has_many'} }],
+        might_have => [keys %{ $args->{'_sweeten'}{'might_have'} }],
+        has_one => [keys %{ $args->{'_sweeten'}{'has_one'} }],
+    };
     my $many_to_many_sources = delete $args->{'_sweeten'}{'across'};
-
+    delete $args->{'_sweeten'};
     $self->add_columns($column_name => $args);
     $self->set_primary_key($self->primary_columns, $column_name);
 
-    return if !defined $has_many_sources && !defined $many_to_many_sources;
 
-    if(defined $has_many_sources) {
-        for my $other_result_source (keys %{ $has_many_sources }) {
+
+    for my $type (keys %{ $normal }) {
+        for my $other_result_source (@{ $normal->{ $type }}) {
             my $other_class = $self->result_source_to_class($other_result_source);
             my $relation_name = $self->result_source_to_relation_name($other_result_source, 1);
-            my $reverse_relation_name = $self->result_source_to_relation_name($self, 0);
-
-            $self->has_many($relation_name, $other_class, $column_name);
-            $self->add_relation($other_class, 'belongs_to', $reverse_relation_name, $self, $column_name);
+            $self->$type($relation_name, $other_class, $column_name);
         }
     }
     if(defined $many_to_many_sources) {
@@ -66,17 +53,22 @@ sub primary {
             for my $to_source (keys %{ $many_to_many_sources->{ $across_source } }) {
                 my $across_class = $self->result_source_to_class($across_source);
                 my $across_relation_name = $self->result_source_to_relation_name($across_source, 1);
-                my $across_reverse_relation_name = $self->result_source_to_relation_name($self, 0);
 
                 my $to_relation_name = $self->result_source_to_relation_name($to_source, 1);
                 my $to_primary_column = $self->result_source_to_relation_name($to_source, 0) . '_id';
 
                 $self->has_many($across_relation_name, $across_class, $column_name);
                 $self->many_to_many($to_relation_name, $across_relation_name, $to_primary_column);
-                $self->add_relation($across_class, 'belongs_to', $across_reverse_relation_name, $self, $column_name);
             }
         }
     }
+}
+sub primary_belongs {
+    my $self = shift;
+
+    my $column_name = $self->belongs(@_);
+    $self->set_primary_key($self->primary_columns, $column_name);
+
 }
 sub foreign {
     my $self = shift;
@@ -84,26 +76,24 @@ sub foreign {
     my $args = shift;
 
     $args->{'is_foreign_key'} = 1;
-    $self->add_columns($column_name => $args);
-
-    $self->handle_foreign_relations($column_name);
-
+    $self->add_column($column_name => $args);
 }
-sub handle_foreign_relations {
+sub belongs {
     my $self = shift;
-    my $column_name = shift;
+    my $other_source = shift;
+    my $args = shift;
 
-    return if !exists $relations_to_add->{ $self }{ $column_name };
-    my @relation = @{ delete $relations_to_add->{ $self }{ $column_name } };
+    my $belongs_to_class = $self->result_source_to_class($other_source);
+    my $belongs_to_relation = $self->result_source_to_relation_name($other_source);
+    my $column_name = $belongs_to_relation . '_id';
 
-    my $class = shift @relation;
-    my $type = shift @relation;
-    $class->$type(@relation);
+    $self->foreign($column_name => $args);
+    $self->belongs_to($belongs_to_relation, $belongs_to_class, $column_name);
 
-    if(!keys %{ $relations_to_add->{ $self }}) {
-        delete $relations_to_add->{ $self };
-    }
+    return $column_name;
+
 }
+
 sub unique {
     my $self = shift;
     my $column_name = shift;
@@ -113,20 +103,27 @@ sub unique {
     $self->add_unique_constraint([ $column_name ]);
 }
 
+# this is possible:
+# primary book_id => integer many 'UnnecessarilyLong|Thing'
+# the pipe denodes where the relation name starts, in this case 'things',
+# instead of unnecessarily_long_things
 sub result_source_to_relation_name {
     my $self = shift;
     my $result_source_name = shift;
     my $plural = shift || 0;
-    my $resultclass = $self->clean_source_name($result_source_name);
+    my $relation_name = $self->clean_source_name($result_source_name);
 
-    $resultclass =~ s{::}{_}g;
-    $resultclass = String::CamelCase::decamelize($resultclass);
+    $relation_name =~ s{::}{_}g;
+    my @parts = split /\|/, $relation_name, 2;
+    $relation_name = $parts[-1];
+    $relation_name = String::CamelCase::decamelize($relation_name);
 
-    return $resultclass.($plural ? 's' : '');
+    return $relation_name.($plural && substr ($relation_name, -1, 1) ne 's' ? 's' : '');
 }
 sub result_source_to_class {
     my $self = shift;
     my $other_result_source = shift;
+    $other_result_source =~ s{\|}{};
 
     # Make it possible to use fully qualified result sources, with a hât.
     return $other_result_source if substr($other_result_source, 0, 1) eq '^';
@@ -144,22 +141,6 @@ sub clean_source_name {
     $source_name =~ s{^.*?::Result::}{};
 
     return $source_name;
-}
-
-sub add_relation {
-    my $self = shift;
-    my $class = shift;
-    my $type = shift;
-    my $relation_name = shift;
-    my $other_class = shift;
-    my $column_name = shift;
-
-    if($seen_table->{ $class }) {
-        $seen_table->{ $class }->$type($relation_name, $other_class, $column_name);
-    }
-    else {
-        $relations_to_add->{ $class }{ $column_name } = [$class, $type, $relation_name, $other_class, $column_name];
-    }
 }
 
 1;
