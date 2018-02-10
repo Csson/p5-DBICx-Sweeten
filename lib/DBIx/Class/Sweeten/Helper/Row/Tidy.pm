@@ -26,9 +26,6 @@ export_methods [qw/
     primary_belongs
 /];
 
-# ABSTRACT: Short intro
-# AUTHORITY
-our $VERSION = '0.0102';
 state $module_loader = Module::Loader->new;
 
 sub col($self, $name, $definition) {

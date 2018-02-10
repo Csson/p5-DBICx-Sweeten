@@ -20,10 +20,6 @@ export_methods [qw/
     primary_belongs
 /];
 
-# ABSTRACT: Short intro
-# AUTHORITY
-our $VERSION = '0.0102';
-
 sub col {
     say $_[0] . '/' . $_[1];
     shift->add_columns(shift ,=> shift);
