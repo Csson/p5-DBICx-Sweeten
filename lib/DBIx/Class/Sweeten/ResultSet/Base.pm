@@ -6,7 +6,7 @@ package DBIx::Class::Sweeten::ResultSet::Base;
 
 # ABSTRACT: Short intro
 # AUTHORITY
-our $VERSION = '0.0102';
+our $VERSION = '0.0104';
 
 use Scalar::Util qw/blessed/;
 use Data::Dump::Streamer;

@@ -6,7 +6,7 @@ package DBIx::Class::Sweeten::Helper::Row::Tidy;
 
 # ABSTRACT: Short intro
 # AUTHORITY
-our $VERSION = '0.0102';
+our $VERSION = '0.0104';
 
 use parent 'DBIx::Class::Row';
 use String::CamelCase;

@@ -6,7 +6,7 @@ package DBIx::Class::Sweeten::ResultSet;
 
 # ABSTRACT: Short intro
 # AUTHORITY
-our $VERSION = '0.0102';
+our $VERSION = '0.0104';
 
 use base 'DBIx::Class::Candy::ResultSet';
 

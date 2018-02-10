@@ -5,7 +5,7 @@ package DBIx::Class::Sweeten::Q;
 
 # ABSTRACT: Short intro
 # AUTHORITY
-our $VERSION = '0.0102';
+our $VERSION = '0.0104';
 
 use overload '&' => "do_and", '|' => 'do_or';
 use Mo;

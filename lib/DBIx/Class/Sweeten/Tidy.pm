@@ -6,7 +6,7 @@ package DBIx::Class::Sweeten::Tidy;
 
 # ABSTRACT: Short intro
 # AUTHORITY
-our $VERSION = '0.0102';
+our $VERSION = '0.0104';
 
 use Carp qw/croak/;
 use List::Util qw/uniq/;
