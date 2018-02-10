@@ -6,7 +6,7 @@ package DBIx::Class::Sweeten;
 
 # ABSTRACT: Short intro
 # AUTHORITY
-our $VERSION = '0.0102';
+our $VERSION = '0.0103';
 
 use Carp qw/croak/;
 use List::Util qw/uniq/;
@@ -72,6 +72,8 @@ use Sub::Exporter::Progressive -setup => {
 
         many
         across
+        might
+        one
     /],
     groups => {
         default => [qw/
@@ -154,10 +156,16 @@ sub merge {
     return $merged;
 }
 sub many {
-    return merge { _sweeten => { many => { shift ,=> 1 } } }, shift || {};
+    return merge { _sweeten => { has_many => { shift ,=> 1 } } }, shift || {};
 }
 sub across {
     return merge { _sweeten => { across => { shift ,=> { shift ,=> 1 } } } }, shift || {};
+}
+sub might {
+    return merge { _sweeten => { might_have => { shift ,=> 1 } } }, shift || {};
+}
+sub one {
+    return merge { _sweeten => { has_one => { shift ,=> 1 } } }, shift || {};
 }
 
 sub type {

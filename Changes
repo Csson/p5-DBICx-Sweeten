@@ -11,6 +11,8 @@ Revision history for DBICx-Sweeten
  [Enhancements]
 
  [New Features]
+ - ::Tidy, with a better API
+ - ::ResultSet::Base, with filter() and filterattr(), instead of search({}, {})
 
  [Other Changes]
 
