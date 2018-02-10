@@ -26,6 +26,8 @@ plugins:
   - +extend_plugin: UploadToStratopan
     repo: TheFirst
 
+  - +remove_plugin: Test::Kwalitee::Extra
+
 ---
 doctype: weaver
 
