@@ -4,6 +4,10 @@ use warnings;
 
 package DBIx::Class::Sweeten::Helper::Row;
 
+# ABSTRACT: Short intro
+# AUTHORITY
+our $VERSION = '0.0102';
+
 use parent 'DBIx::Class::Row';
 use String::CamelCase;
 use DBIx::Class::Candy::Exports;
@@ -21,6 +25,7 @@ export_methods [qw/
 our $VERSION = '0.0102';
 
 sub col {
+    say $_[0] . '/' . $_[1];
     shift->add_columns(shift ,=> shift);
 }
 
