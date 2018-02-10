@@ -6,15 +6,14 @@ DBIx::Class::Sweeten - Short intro
     <p>
     <img src="https://img.shields.io/badge/perl-5.10.1+-blue.svg" alt="Requires Perl 5.10.1+" />
     <a href="https://travis-ci.org//"><img src="https://api.travis-ci.org//.svg?branch=master" alt="Travis status" /></a>
-    <a href="http://cpants.cpanauthors.org/release/CSSON/DBIx-Class-Sweeten-0.0102"><img src="http://badgedepot.code301.com/badge/kwalitee/CSSON/DBIx-Class-Sweeten/0.0102" alt="Distribution kwalitee" /></a>
-    <a href="http://matrix.cpantesters.org/?dist=DBIx-Class-Sweeten%200.0102"><img src="http://badgedepot.code301.com/badge/cpantesters/DBIx-Class-Sweeten/0.0102" alt="CPAN Testers result" /></a>
-    <img src="https://img.shields.io/badge/coverage-73.8%-red.svg" alt="coverage 73.8%" />
+    <a href="http://cpants.cpanauthors.org/release/CSSON/DBIx-Class-Sweeten-0.0103"><img src="http://badgedepot.code301.com/badge/kwalitee/CSSON/DBIx-Class-Sweeten/0.0103" alt="Distribution kwalitee" /></a>
+    <a href="http://matrix.cpantesters.org/?dist=DBIx-Class-Sweeten%200.0103"><img src="http://badgedepot.code301.com/badge/cpantesters/DBIx-Class-Sweeten/0.0103" alt="CPAN Testers result" /></a>
     </p>
 </div>
 
 # VERSION
 
-Version 0.0102, released 2016-09-21.
+Version 0.0103, released 2018-02-10.
 
 # SYNOPSIS
 
