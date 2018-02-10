@@ -26,7 +26,7 @@ sub do_and($self, $other, $swap) {
 sub do_or($self, $other, $swap) {
     say '- OR -' . $swap;
     say 'self value ref : ' . ref $self->value;
-    say 'other value ref: ' . ref $other->value; 
+    say 'other value ref: ' . ref $other->value;
     say Dump $self->value;
     say '      - ';
     say Dump $other->value;
